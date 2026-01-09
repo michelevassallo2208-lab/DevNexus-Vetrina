@@ -6,6 +6,7 @@ import Services from './components/Services';
 import About from './components/About';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
+import TechStack from './components/TechStack';
 import { Language, translations } from './translations';
 import Logo from './components/Logo';
 
@@ -20,6 +21,7 @@ const App: React.FC = () => {
       <main>
         <Hero t={t} />
         <About t={t} />
+        <TechStack t={t} />
         <Services t={t} />
         <Projects t={t} />
         <Contact t={t} />

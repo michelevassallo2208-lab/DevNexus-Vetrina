@@ -1,8 +1,8 @@
 
 import React, { useState } from 'react';
-// Added Globe to the imported icons from lucide-react
-import { ExternalLink, Github, ArrowUpRight, X, Monitor, Smartphone, RefreshCw, Globe } from 'lucide-react';
+import { ExternalLink, ArrowUpRight, X, Monitor, Smartphone, RefreshCw, Globe, MousePointer2 } from 'lucide-react';
 import { PROJECTS } from '../constants';
+import { MonolithDemo, VogueDemo, NexusCreativeDemo } from './ProjectDemos';
 
 interface ProjectsProps {
   t: any;
@@ -17,11 +17,21 @@ const Projects: React.FC<ProjectsProps> = ({ t }) => {
     setActivePreview(link);
     setIsPreviewLoading(true);
     document.body.style.overflow = 'hidden';
+    setTimeout(() => setIsPreviewLoading(false), 1500); 
   };
 
   const closePreview = () => {
     setActivePreview(null);
     document.body.style.overflow = 'auto';
+  };
+
+  const renderDemo = () => {
+    switch (activePreview) {
+      case 'noir': return <MonolithDemo />;
+      case 'velvet': return <VogueDemo />;
+      case 'aether': return <NexusCreativeDemo />;
+      default: return null;
+    }
   };
 
   return (
@@ -35,30 +45,29 @@ const Projects: React.FC<ProjectsProps> = ({ t }) => {
               {t.portfolio.subtitle}
             </p>
           </div>
-          <a href="#" className="flex items-center space-x-3 text-white font-black uppercase tracking-tighter text-lg group">
-            <span className="border-b-2 border-white/10 group-hover:border-blue-500 transition-colors">{t.portfolio.viewAll}</span>
-            <div className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-blue-600 group-hover:border-blue-500 transition-all">
-              <ArrowUpRight className="w-6 h-6" />
-            </div>
-          </a>
+          <div className="flex items-center space-x-2 text-slate-500 font-black uppercase tracking-widest text-[10px]">
+            <MousePointer2 className="w-4 h-4 text-emerald-500 animate-bounce" />
+            <span>Click to explore the Full Sites</span>
+          </div>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
           {PROJECTS.map((project) => (
             <div key={project.id} className="group relative flex flex-col h-full bg-slate-900/50 backdrop-blur-sm rounded-[32px] overflow-hidden border border-white/5 hover:border-blue-500/30 transition-all duration-500 hover:-translate-y-2">
               <div className="relative aspect-[4/3] overflow-hidden cursor-pointer" onClick={() => openPreview(project.link)}>
-                <div className="absolute inset-0 bg-blue-600/20 opacity-0 group-hover:opacity-100 transition-opacity z-10 pointer-events-none flex items-center justify-center">
+                <div className="absolute inset-0 bg-blue-600/20 opacity-0 group-hover:opacity-100 transition-opacity z-10 pointer-events-none flex flex-col items-center justify-center space-y-4">
                    <div className="px-6 py-3 bg-white text-slate-950 rounded-full font-black text-xs uppercase tracking-widest transform translate-y-4 group-hover:translate-y-0 transition-transform">
                      {t.portfolio.preview}
                    </div>
+                   <p className="text-[10px] text-white font-black uppercase tracking-[0.2em] opacity-0 group-hover:opacity-100 transition-opacity delay-100 italic">Interattività Completa</p>
                 </div>
                 <img 
                   src={project.image} 
                   alt={project.title} 
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 grayscale hover:grayscale-0"
                 />
                 <div className="absolute top-6 left-6 z-20 flex flex-wrap gap-2">
-                  {project.tags.slice(0, 2).map(tag => (
+                  {project.tags.map(tag => (
                     <span key={tag} className="px-3 py-1 bg-slate-950/80 backdrop-blur-md border border-white/10 text-white text-[9px] font-black uppercase tracking-widest rounded-full shadow-lg">
                       {tag}
                     </span>
@@ -82,14 +91,12 @@ const Projects: React.FC<ProjectsProps> = ({ t }) => {
                        <ArrowUpRight className="w-4 h-4" />
                     </div>
                   </button>
-                  <div className="flex space-x-3">
-                    <button className="p-2.5 text-slate-400 hover:text-white transition-colors">
-                      <Github className="w-5 h-5" />
-                    </button>
-                    <a href={project.link} target="_blank" rel="noreferrer" className="p-2.5 text-slate-400 hover:text-white transition-colors">
-                      <ExternalLink className="w-5 h-5" />
-                    </a>
-                  </div>
+                  <button 
+                    onClick={() => openPreview(project.link)}
+                    className="p-2.5 text-slate-400 hover:text-white transition-colors"
+                  >
+                    <Monitor className="w-5 h-5" />
+                  </button>
                 </div>
               </div>
             </div>
@@ -107,13 +114,13 @@ const Projects: React.FC<ProjectsProps> = ({ t }) => {
             <div className="bg-slate-800/50 border-b border-white/5 p-4 flex items-center justify-between">
               <div className="flex items-center space-x-6">
                 <div className="flex space-x-2">
-                  <button onClick={closePreview} className="w-3.5 h-3.5 rounded-full bg-red-500/80 hover:bg-red-500 transition-colors"></button>
+                  <button onClick={closePreview} className="w-3.5 h-3.5 rounded-full bg-red-500/80 hover:bg-red-500 transition-colors outline-none"></button>
                   <div className="w-3.5 h-3.5 rounded-full bg-yellow-500/20"></div>
                   <div className="w-3.5 h-3.5 rounded-full bg-green-500/20"></div>
                 </div>
-                <div className="hidden md:flex items-center bg-slate-950 px-4 py-2 rounded-xl border border-white/5 min-w-[300px]">
+                <div className="hidden md:flex items-center bg-slate-950 px-4 py-2 rounded-xl border border-white/5 min-w-[200px]">
                   <Globe className="w-3 h-3 text-slate-500 mr-3" />
-                  <span className="text-[10px] text-slate-400 font-bold truncate">{activePreview}</span>
+                  <span className="text-[10px] text-slate-400 font-bold uppercase tracking-widest truncate">preview.devnexus.it/{activePreview}</span>
                 </div>
               </div>
 
@@ -132,35 +139,25 @@ const Projects: React.FC<ProjectsProps> = ({ t }) => {
                     <Smartphone className="w-4 h-4" />
                   </button>
                 </div>
-                <a 
-                  href={activePreview} 
-                  target="_blank" 
-                  rel="noreferrer"
-                  className="p-2 text-slate-400 hover:text-white transition-colors"
-                >
-                  <ExternalLink className="w-5 h-5" />
-                </a>
+                <button onClick={closePreview} className="p-2 text-slate-400 hover:text-white transition-colors">
+                  <X className="w-6 h-6" />
+                </button>
               </div>
             </div>
 
-            {/* Iframe Content */}
-            <div className="flex-1 bg-slate-950 relative flex justify-center overflow-auto p-4 md:p-10 no-scrollbar">
+            {/* Content Container - Fixed scrolling issue by using overflow-y-auto on the wrapper */}
+            <div className="flex-1 bg-slate-950 relative overflow-y-auto overflow-x-hidden no-scrollbar">
               {isPreviewLoading && (
-                <div className="absolute inset-0 flex items-center justify-center bg-slate-950 z-10">
+                <div className="sticky top-0 left-0 w-full h-full flex items-center justify-center bg-slate-950 z-[110]">
                   <div className="flex flex-col items-center">
                     <RefreshCw className="w-10 h-10 text-blue-500 animate-spin mb-4" />
-                    <p className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em]">Connecting to Nexus...</p>
+                    <p className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em]">Instantiating Virtual DOM...</p>
                   </div>
                 </div>
               )}
               
-              <div className={`bg-white transition-all duration-700 ease-in-out shadow-2xl overflow-hidden rounded-2xl ${viewMode === 'desktop' ? 'w-full h-full' : 'w-[375px] h-[667px] my-auto'}`}>
-                <iframe 
-                  src={activePreview} 
-                  className="w-full h-full border-none"
-                  onLoad={() => setIsPreviewLoading(false)}
-                  title="Project Preview"
-                />
+              <div className={`mx-auto transition-all duration-700 ease-in-out shadow-2xl ${viewMode === 'desktop' ? 'w-full' : 'w-[375px] my-10 rounded-[40px] border-[8px] border-slate-800 overflow-hidden'}`}>
+                {renderDemo()}
               </div>
             </div>
           </div>

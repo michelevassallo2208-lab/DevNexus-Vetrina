@@ -4,62 +4,41 @@ import {
   Server, 
   ShieldCheck, 
   Cpu, 
-  Globe, 
+  Globe,
+  Code2,
   Zap,
-  Layout,
+  Box,
+  Layers,
+  Terminal,
   Database,
-  Lock
+  Infinity
 } from 'lucide-react';
 import { Project, Skill } from './types';
 
 export const PROJECTS: Project[] = [
   {
     id: 1,
-    title: 'CloudStack Automator',
-    description: 'Advanced orchestration platform using Terraform & Ansible for multi-region hybrid cloud management.',
-    image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=800&auto=format&fit=crop',
-    tags: ['Terraform', 'Go', 'AWS', 'Ansible'],
-    link: 'https://www.terraform.io/'
+    title: 'Monolith Architecture',
+    description: 'Sito vetrina ultra-premium con sezioni a scorrimento lungo, gallerie artistiche e design brutalista.',
+    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800',
+    tags: ['Minimalismo', 'Luxury', 'Animazioni'],
+    link: 'noir'
   },
   {
     id: 2,
-    title: 'Astra Finance Dashboard',
-    description: 'High-performance real-time trading dashboard with micro-frontend architecture and WebSockets.',
-    image: 'https://images.unsplash.com/photo-1551288049-bbdac8a28a1e?q=80&w=800&auto=format&fit=crop',
-    tags: ['React', 'D3.js', 'Redis', 'Node.js'],
-    link: 'https://v0.dev'
+    title: 'Vogue Couture Shop',
+    description: 'E-commerce di alta moda completo di carrello interattivo, schede prodotto editoriali e catalogo fluido.',
+    image: 'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=800',
+    tags: ['E-Commerce', 'Fashion', 'Carrello'],
+    link: 'velvet'
   },
   {
     id: 3,
-    title: 'Nexus-Monitor Pro',
-    description: 'Enterprise server monitoring tool featuring predictive analytics and AI-driven alerting.',
-    image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc51?q=80&w=800&auto=format&fit=crop',
-    tags: ['Python', 'Docker', 'Grafana', 'InfluxDB'],
-    link: 'https://grafana.com/'
-  },
-  {
-    id: 4,
-    title: 'LuxDesign Luxury Store',
-    description: 'Ultra-fast e-commerce experience for high-end fashion brands with headless CMS and 3D previews.',
-    image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=800&auto=format&fit=crop',
-    tags: ['Next.js', 'Three.js', 'Shopify', 'GSAP'],
-    link: 'https://stripe.com/it'
-  },
-  {
-    id: 5,
-    title: 'SecureNode VPN Client',
-    description: 'Desktop application with custom WireGuard implementation and military-grade encryption UI.',
-    image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=800&auto=format&fit=crop',
-    tags: ['Rust', 'Tauri', 'TypeScript', 'WireGuard'],
-    link: 'https://www.wireguard.com/'
-  },
-  {
-    id: 6,
-    title: 'Quantum Code Hub',
-    description: 'Collaborative code editing environment with real-time peer-to-peer syncing and AI integration.',
-    image: 'https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=800&auto=format&fit=crop',
-    tags: ['WebRTC', 'Monaco Editor', 'React', 'Zustand'],
-    link: 'https://codesandbox.io/'
+    title: 'Nexus Creative Labs',
+    description: 'Sito agenzia tech-forward con glassmorphism, gradienti neon e sezioni interattive ad alto impatto.',
+    image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=800',
+    tags: ['Futuristico', 'Tech', 'Immersivo'],
+    link: 'aether'
   }
 ];
 
@@ -72,6 +51,17 @@ export const SKILLS: Skill[] = [
   { name: 'Infrastructure as Code', level: 94, category: 'Systems' },
   { name: 'CI/CD Pipelines', level: 85, category: 'DevOps' },
   { name: 'Cybersecurity Hardening', level: 82, category: 'DevOps' },
+];
+
+export const FRAMEWORKS = [
+  { name: 'React', icon: <Layers className="w-6 h-6 text-[#61DAFB]" />, desc: 'UI Library' },
+  { name: 'Next.js', icon: <Box className="w-6 h-6 text-white" />, desc: 'React Framework' },
+  { name: 'Vite', icon: <Zap className="w-6 h-6 text-[#FFD62E]" />, desc: 'Frontend Tooling' },
+  { name: 'Node.js', icon: <Terminal className="w-6 h-6 text-[#339933]" />, desc: 'JS Runtime' },
+  { name: 'Tailwind', icon: <Globe className="w-6 h-6 text-[#06B6D4]" />, desc: 'CSS Framework' },
+  { name: 'TypeScript', icon: <Code2 className="w-6 h-6 text-[#3178C6]" />, desc: 'Static Typing' },
+  { name: 'PostgreSQL', icon: <Database className="w-6 h-6 text-[#4169E1]" />, desc: 'Database' },
+  { name: 'Docker', icon: <Infinity className="w-6 h-6 text-[#2496ED]" />, desc: 'Containerization' },
 ];
 
 export const SERVICE_ICONS = [
