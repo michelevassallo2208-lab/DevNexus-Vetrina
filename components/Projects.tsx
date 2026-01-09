@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { ExternalLink, ArrowUpRight, X, Monitor, Smartphone, RefreshCw, Globe, MousePointer2 } from 'lucide-react';
+import { ExternalLink, ArrowUpRight, X, Monitor, Smartphone, RefreshCw, Globe, MousePointer2, Layers, Zap, Layout } from 'lucide-react';
 import { PROJECTS } from '../constants';
 import { MonolithDemo, VogueDemo, NexusCreativeDemo } from './ProjectDemos';
 
@@ -17,7 +17,7 @@ const Projects: React.FC<ProjectsProps> = ({ t }) => {
     setActivePreview(link);
     setIsPreviewLoading(true);
     document.body.style.overflow = 'hidden';
-    setTimeout(() => setIsPreviewLoading(false), 1500); 
+    setTimeout(() => setIsPreviewLoading(false), 1200); 
   };
 
   const closePreview = () => {
@@ -66,6 +66,8 @@ const Projects: React.FC<ProjectsProps> = ({ t }) => {
                   alt={project.title} 
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 grayscale hover:grayscale-0"
                 />
+                
+                {/* Tech Badges */}
                 <div className="absolute top-6 left-6 z-20 flex flex-wrap gap-2">
                   {project.tags.map(tag => (
                     <span key={tag} className="px-3 py-1 bg-slate-950/80 backdrop-blur-md border border-white/10 text-white text-[9px] font-black uppercase tracking-widest rounded-full shadow-lg">
@@ -73,10 +75,16 @@ const Projects: React.FC<ProjectsProps> = ({ t }) => {
                     </span>
                   ))}
                 </div>
+
+                {/* Framework indicators */}
+                <div className="absolute bottom-6 left-6 z-20 flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                   <div className="w-8 h-8 rounded-lg bg-slate-950/80 backdrop-blur-md border border-white/10 flex items-center justify-center"><Layout className="w-3 h-3 text-blue-400" /></div>
+                   <div className="w-8 h-8 rounded-lg bg-slate-950/80 backdrop-blur-md border border-white/10 flex items-center justify-center"><Zap className="w-3 h-3 text-yellow-400" /></div>
+                </div>
               </div>
               
               <div className="p-8 flex flex-col flex-1">
-                <h4 className="text-2xl font-black text-white mb-4 tracking-tight">{project.title}</h4>
+                <h4 className="text-2xl font-black text-white mb-4 tracking-tight leading-none italic">{project.title}</h4>
                 <p className="text-slate-400 text-sm font-medium leading-relaxed mb-8 flex-1">
                   {project.description}
                 </p>
@@ -91,12 +99,15 @@ const Projects: React.FC<ProjectsProps> = ({ t }) => {
                        <ArrowUpRight className="w-4 h-4" />
                     </div>
                   </button>
-                  <button 
-                    onClick={() => openPreview(project.link)}
-                    className="p-2.5 text-slate-400 hover:text-white transition-colors"
-                  >
-                    <Monitor className="w-5 h-5" />
-                  </button>
+                  <div className="flex items-center space-x-3">
+                    <div className="h-4 w-px bg-white/10"></div>
+                    <button 
+                      onClick={() => openPreview(project.link)}
+                      className="p-2.5 text-slate-400 hover:text-white transition-colors"
+                    >
+                      <Monitor className="w-5 h-5" />
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -106,26 +117,26 @@ const Projects: React.FC<ProjectsProps> = ({ t }) => {
 
       {/* Live Preview Modal */}
       {activePreview && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8 animate-in fade-in duration-300">
-          <div className="absolute inset-0 bg-slate-950/90 backdrop-blur-xl" onClick={closePreview}></div>
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-2 md:p-8 animate-in fade-in duration-300">
+          <div className="absolute inset-0 bg-slate-950/95 backdrop-blur-2xl" onClick={closePreview}></div>
           
-          <div className="relative w-full h-full max-w-6xl bg-slate-900 border border-white/10 rounded-[40px] shadow-[0_40px_100px_rgba(0,0,0,0.8)] overflow-hidden flex flex-col transform animate-in zoom-in-95 duration-500">
+          <div className="relative w-full h-full max-w-7xl bg-slate-900 border border-white/10 rounded-[40px] shadow-[0_40px_100px_rgba(0,0,0,0.8)] overflow-hidden flex flex-col transform animate-in zoom-in-95 duration-500">
             {/* Modal Header / Browser Bar */}
-            <div className="bg-slate-800/50 border-b border-white/5 p-4 flex items-center justify-between">
+            <div className="bg-slate-800/50 border-b border-white/5 p-4 flex items-center justify-between z-50">
               <div className="flex items-center space-x-6">
                 <div className="flex space-x-2">
                   <button onClick={closePreview} className="w-3.5 h-3.5 rounded-full bg-red-500/80 hover:bg-red-500 transition-colors outline-none"></button>
                   <div className="w-3.5 h-3.5 rounded-full bg-yellow-500/20"></div>
                   <div className="w-3.5 h-3.5 rounded-full bg-green-500/20"></div>
                 </div>
-                <div className="hidden md:flex items-center bg-slate-950 px-4 py-2 rounded-xl border border-white/5 min-w-[200px]">
+                <div className="hidden md:flex items-center bg-slate-950 px-6 py-2 rounded-xl border border-white/5 min-w-[300px]">
                   <Globe className="w-3 h-3 text-slate-500 mr-3" />
-                  <span className="text-[10px] text-slate-400 font-bold uppercase tracking-widest truncate">preview.devnexus.it/{activePreview}</span>
+                  <span className="text-[10px] text-slate-400 font-bold uppercase tracking-[0.2em] truncate">demo-instance-active.devnexus.it/{activePreview}</span>
                 </div>
               </div>
 
               <div className="flex items-center space-x-4">
-                <div className="hidden sm:flex bg-slate-950 p-1 rounded-xl border border-white/5">
+                <div className="flex bg-slate-950 p-1 rounded-xl border border-white/5">
                   <button 
                     onClick={() => setViewMode('desktop')}
                     className={`p-2 rounded-lg transition-all ${viewMode === 'desktop' ? 'bg-white/10 text-white' : 'text-slate-500 hover:text-slate-300'}`}
@@ -145,18 +156,19 @@ const Projects: React.FC<ProjectsProps> = ({ t }) => {
               </div>
             </div>
 
-            {/* Content Container - Fixed scrolling issue by using overflow-y-auto on the wrapper */}
+            {/* Content Container - Correct overflow handling */}
             <div className="flex-1 bg-slate-950 relative overflow-y-auto overflow-x-hidden no-scrollbar">
               {isPreviewLoading && (
-                <div className="sticky top-0 left-0 w-full h-full flex items-center justify-center bg-slate-950 z-[110]">
+                <div className="sticky top-0 left-0 w-full h-full flex items-center justify-center bg-slate-950 z-[110] backdrop-blur-xl">
                   <div className="flex flex-col items-center">
-                    <RefreshCw className="w-10 h-10 text-blue-500 animate-spin mb-4" />
-                    <p className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em]">Instantiating Virtual DOM...</p>
+                    <RefreshCw className="w-12 h-12 text-blue-500 animate-spin mb-6" />
+                    <p className="text-[10px] font-black text-slate-500 uppercase tracking-[0.4em]">Allocating Server Resources...</p>
                   </div>
                 </div>
               )}
               
-              <div className={`mx-auto transition-all duration-700 ease-in-out shadow-2xl ${viewMode === 'desktop' ? 'w-full' : 'w-[375px] my-10 rounded-[40px] border-[8px] border-slate-800 overflow-hidden'}`}>
+              <div className={`mx-auto transition-all duration-700 ease-in-out shadow-2xl relative ${viewMode === 'desktop' ? 'w-full' : 'w-[375px] my-10 rounded-[40px] border-[12px] border-slate-800 overflow-hidden h-[812px]'}`}>
+                {/* Embedded site renders here */}
                 {renderDemo()}
               </div>
             </div>
