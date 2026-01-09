@@ -19,7 +19,7 @@ export const PROJECTS: Project[] = [
     description: 'Advanced orchestration platform using Terraform & Ansible for multi-region hybrid cloud management.',
     image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=800&auto=format&fit=crop',
     tags: ['Terraform', 'Go', 'AWS', 'Ansible'],
-    link: '#'
+    link: 'https://www.terraform.io/'
   },
   {
     id: 2,
@@ -27,7 +27,7 @@ export const PROJECTS: Project[] = [
     description: 'High-performance real-time trading dashboard with micro-frontend architecture and WebSockets.',
     image: 'https://images.unsplash.com/photo-1551288049-bbdac8a28a1e?q=80&w=800&auto=format&fit=crop',
     tags: ['React', 'D3.js', 'Redis', 'Node.js'],
-    link: '#'
+    link: 'https://v0.dev'
   },
   {
     id: 3,
@@ -35,7 +35,7 @@ export const PROJECTS: Project[] = [
     description: 'Enterprise server monitoring tool featuring predictive analytics and AI-driven alerting.',
     image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc51?q=80&w=800&auto=format&fit=crop',
     tags: ['Python', 'Docker', 'Grafana', 'InfluxDB'],
-    link: '#'
+    link: 'https://grafana.com/'
   },
   {
     id: 4,
@@ -43,7 +43,7 @@ export const PROJECTS: Project[] = [
     description: 'Ultra-fast e-commerce experience for high-end fashion brands with headless CMS and 3D previews.',
     image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=800&auto=format&fit=crop',
     tags: ['Next.js', 'Three.js', 'Shopify', 'GSAP'],
-    link: '#'
+    link: 'https://stripe.com/it'
   },
   {
     id: 5,
@@ -51,7 +51,7 @@ export const PROJECTS: Project[] = [
     description: 'Desktop application with custom WireGuard implementation and military-grade encryption UI.',
     image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=800&auto=format&fit=crop',
     tags: ['Rust', 'Tauri', 'TypeScript', 'WireGuard'],
-    link: '#'
+    link: 'https://www.wireguard.com/'
   },
   {
     id: 6,
@@ -59,7 +59,7 @@ export const PROJECTS: Project[] = [
     description: 'Collaborative code editing environment with real-time peer-to-peer syncing and AI integration.',
     image: 'https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=800&auto=format&fit=crop',
     tags: ['WebRTC', 'Monaco Editor', 'React', 'Zustand'],
-    link: '#'
+    link: 'https://codesandbox.io/'
   }
 ];
 
